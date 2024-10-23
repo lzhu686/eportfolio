@@ -1,0 +1,99 @@
+{
+  "navigation": {
+    "home": "Home",
+    "skills": "Skills",
+    "projects": "Projects",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "home": {
+    "name": "Zhu Liang",
+    "title": "Interdisciplinary Engineer & Designer",
+    "bio": "Welcome to my ePortfolio. I am an engineer and designer with an interdisciplinary background, focusing on applying design thinking to complex system development. My deep background in mechanical engineering, industrial design, and computer science allows me to integrate multidisciplinary knowledge and methods in projects.",
+    "highlight": "As a student in the Red Bird MPhil program at HKUST(GZ), I have achieved significant growth in interdisciplinary innovation. The unique curriculum and practical opportunities of this program have enabled me to integrate knowledge from engineering, design, and computer science, fostering my ability to solve complex problems."
+  },
+  "skills": {
+    "title": "Skills",
+    "categories": {
+      "engineering": "Engineering",
+      "design": "Design",
+      "computerScience": "Computer Science",
+      "softSkills": "Soft Skills",
+      "interdisciplinary": "Interdisciplinary Skills"
+    },
+    "list": {
+      "engineering": [
+        "Mechanical Engineering Design",
+        "CAD (Computer-Aided Design)",
+        "Prototype Design",
+        "Structural Analysis"
+      ],
+      "design": [
+        "Industrial Design",
+        "3D Modeling and Rendering",
+        "Design Thinking",
+        "User Experience (UX) Design"
+      ],
+      "computerScience": [
+        "Python Programming",
+        "Data Analysis",
+        "Machine Learning",
+        "Web Development"
+      ],
+      "softSkills": [
+        "Project Management",
+        "Team Leadership",
+        "Cross-functional Collaboration",
+        "Problem Solving"
+      ],
+      "interdisciplinary": [
+        "Interdisciplinary Problem Analysis",
+        "Innovative Thinking",
+        "System Integration",
+        "Multi-domain Knowledge Application"
+      ]
+    }
+  },
+  "projects": {
+    "title": "Project Experience",
+    "list": [
+      {
+        "title": "Red Bird Project",
+        "description": "As a mechanical engineer, I participated in the development of a drone system, responsible for structural design and prototype production. I applied design thinking methods to solve challenges in weight and aerodynamics."
+      },
+      {
+        "title": "Smart Home System Design",
+        "description": "Combining knowledge of industrial design and computer science, I designed a user-friendly smart home control system. I developed the backend control logic using Python."
+      },
+      {
+        "title": "Sustainable Packaging Design",
+        "description": "Using design thinking methods, I designed an eco-friendly packaging solution for a food company. Through material innovation and structural optimization, I significantly reduced packaging waste."
+      },
+      {
+        "title": "Interdisciplinary Innovation Project",
+        "description": "As part of the Red Bird program, I led a team in developing an AI-powered sustainable urban transportation solution, integrating knowledge from engineering, design, and computer science."
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "degree1": "Master of Philosophy",
+    "school1": "Hong Kong University of Science and Technology (Guangzhou)",
+    "year1": "2024 - 2026",
+    "degree2": "Bachelor of Science",
+    "school2": "Beijing Normal University",
+    "year2": "2022 - 2024",
+    "degree3": "Bachelor of Science",
+    "school3": "Nankai University",
+    "year3": "2018 - 2022"
+  },
+  "contact": {
+    "title": "Contact Information",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "aiChat": {
+    "title": "AI Assistant",
+    "inputPlaceholder": "Ask me anything..."
+  }
+}

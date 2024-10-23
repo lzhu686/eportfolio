@@ -24,7 +24,6 @@ function Contact() {
       <h1>{t('contact.title')}</h1>
       <ContactInfo>{t('contact.email')}: <ContactLink href="mailto:lzhu686@connect.hkust-gz.edu.cn">lzhu686@connect.hkust-gz.edu.cn</ContactLink></ContactInfo>
       <ContactInfo>{t('contact.phone')}: +86 13056352551</ContactInfo>
-      <ContactInfo>LinkedIn: <ContactLink href="https://linkedin.com/in/zhuliang" target="_blank" rel="noopener noreferrer">linkedin.com/in/zhuliang</ContactLink></ContactInfo>
       <ContactInfo>GitHub: <ContactLink href="https://github.com/lzhu686" target="_blank" rel="noopener noreferrer">github.com/lzhu686</ContactLink></ContactInfo>
     </PageContainer>
   );

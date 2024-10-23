@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   body, html {
@@ -56,15 +60,22 @@ const GlobalStyle = createGlobalStyle`
 
   .content {
     flex: 1;
-    padding: 2rem;
+    padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+    box-sizing: border-box;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: ${props => props.theme.fonts.heading};
     color: ${props => props.theme.colors.primary};
+  }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
   }
 `;
 

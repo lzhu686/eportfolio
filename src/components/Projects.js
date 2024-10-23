@@ -5,14 +5,17 @@ import { PageContainer } from '../styles/CommonStyles';
 
 const ProjectsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Project = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 
@@ -24,13 +27,13 @@ const Project = styled.div`
 
 const ProjectTitle = styled.h2`
   color: ${props => props.theme.colors.primary};
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 `;
 
 const ProjectDescription = styled.p`
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.4;
   color: ${props => props.theme.colors.text};
 `;
 

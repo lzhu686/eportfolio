@@ -158,19 +158,26 @@ const ToggleButton = styled(motion.button)`
 
 const TypewriterText = ({ text }) => {
   const [displayText, setDisplayText] = useState('');
-  const index = useRef(0);
 
   useEffect(() => {
-    if (index.current < text.length) {
-      const timeoutId = setTimeout(() => {
-        setDisplayText((prev) => prev + text[index.current]);
-        index.current += 1;
-      }, 30);
-      return () => clearTimeout(timeoutId);
-    }
-  }, [displayText, text]);
+    if (!text) return;
+    
+    let currentIndex = 0;
+    const textLength = text.length;
+    
+    const timer = setInterval(() => {
+      if (currentIndex < textLength) {
+        setDisplayText(text.slice(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 30);
 
-  return <span>{displayText}</span>;
+    return () => clearInterval(timer);
+  }, [text]);
+
+  return displayText;
 };
 
 function AIChat() {
@@ -199,7 +206,11 @@ function AIChat() {
 
       try {
         const response = await aiService.sendMessage(userMessage);
-        setMessages(prev => [...prev, { text: response, isAI: true }]);
+        if (response) {
+          setMessages(prev => [...prev, { text: response, isAI: true }]);
+        } else {
+          throw new Error('无效的响应');
+        }
       } catch (err) {
         setError('抱歉，发生错误，请稍后重试');
         console.error('聊天错误:', err);
@@ -220,9 +231,9 @@ function AIChat() {
       <AnimatePresence>
         {isOpen && (
           <ChatContainer
-            $initial={{ opacity: 0, y: 50 }}
-            $animate={{ opacity: 1, y: 0 }}
-            $exit={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
           >
             <ChatHeader>
               <div style={{ display: 'flex', alignItems: 'center' }}>

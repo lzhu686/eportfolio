@@ -8,7 +8,11 @@ const HomeContainer = styled(PageContainer)`
   text-align: center;
 `;
 
-const Title = styled(motion.h1)`
+const AnimatedContainer = styled(motion.div)`
+  // 样式保持不变
+`;
+
+const AnimatedTitle = styled(motion.h1)`
   font-size: 3rem;
   color: ${props => props.theme.colors.primary};
   margin-bottom: 1rem;
@@ -42,13 +46,19 @@ function Home() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <Title
-        initial={{ y: -50 }}
-        animate={{ y: 0 }}
-        transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
+      <AnimatedContainer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
       >
-        {t('home.name')}
-      </Title>
+        <AnimatedTitle
+          initial={{ y: -50 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
+        >
+          {t('home.name')}
+        </AnimatedTitle>
+      </AnimatedContainer>
       <Subtitle
         initial={{ y: -30 }}
         animate={{ y: 0 }}

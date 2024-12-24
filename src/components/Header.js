@@ -37,7 +37,7 @@ const NavLinks = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     width: 100%;
-    display: ${props => props.isOpen ? 'flex' : 'none'};
+    display: ${props => props.$isOpen ? 'flex' : 'none'};
   }
 `;
 
@@ -97,7 +97,7 @@ function Header() {
       <NavContent>
         <Title>{t('header.title')}</Title>
         <MenuButton onClick={toggleMenu}>☰</MenuButton>
-        <NavLinks isOpen={isOpen}>
+        <NavLinks $isOpen={isOpen}>
           <NavLink to="/">{t('navigation.home')}</NavLink>
           <NavLink to="/skills">{t('navigation.skills')}</NavLink>
           <NavLink to="/projects">{t('navigation.projects')}</NavLink>

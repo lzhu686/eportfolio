@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
+import { aiService } from '../services/aiService';
 
 const slideIn = keyframes`
   from { transform: translateY(100%); }
@@ -114,13 +115,14 @@ const Message = styled(motion.div)`
   font-size: 14px;
   line-height: 1.4;
   word-wrap: break-word;
-  ${props => props.isAI ? `
+  
+  ${({ $isAI, theme }) => $isAI ? `
     align-self: flex-start;
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
   ` : `
     align-self: flex-end;
-    background-color: ${props.theme.colors.accent};
+    background-color: ${theme.colors.accent};
     color: white;
   `}
 `;
@@ -176,6 +178,8 @@ function AIChat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isOpen, setIsOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -184,14 +188,24 @@ function AIChat() {
 
   useEffect(scrollToBottom, [messages]);
 
-  const handleSend = (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
-    if (input.trim()) {
-      setMessages([...messages, { text: input, isAI: false }]);
+    if (input.trim() && !isLoading) {
+      const userMessage = input.trim();
       setInput('');
-      setTimeout(() => {
-        setMessages(prev => [...prev, { text: "这是AI的回复", isAI: true }]);
-      }, 1000);
+      setMessages(prev => [...prev, { text: userMessage, isAI: false }]);
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const response = await aiService.sendMessage(userMessage);
+        setMessages(prev => [...prev, { text: response, isAI: true }]);
+      } catch (err) {
+        setError('抱歉，发生错误，请稍后重试');
+        console.error('聊天错误:', err);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -206,9 +220,9 @@ function AIChat() {
       <AnimatePresence>
         {isOpen && (
           <ChatContainer
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
+            $initial={{ opacity: 0, y: 50 }}
+            $animate={{ opacity: 1, y: 0 }}
+            $exit={{ opacity: 0, y: 50 }}
           >
             <ChatHeader>
               <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -221,7 +235,7 @@ function AIChat() {
               {messages.map((msg, index) => (
                 <Message
                   key={index}
-                  isAI={msg.isAI}
+                  $isAI={msg.isAI}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
@@ -229,6 +243,16 @@ function AIChat() {
                   {msg.isAI ? <TypewriterText text={msg.text} /> : msg.text}
                 </Message>
               ))}
+              {isLoading && (
+                <Message $isAI>
+                  <span>思考中...</span>
+                </Message>
+              )}
+              {error && (
+                <Message $isAI style={{color: 'red'}}>
+                  {error}
+                </Message>
+              )}
               <div ref={messagesEndRef} />
             </ChatMessages>
             <ChatInputContainer>
@@ -236,6 +260,7 @@ function AIChat() {
                 value={input}
                 onChange={handleInputChange}
                 placeholder={t('aiChat.inputPlaceholder')}
+                disabled={isLoading}
                 onKeyPress={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
@@ -243,7 +268,10 @@ function AIChat() {
                   }
                 }}
               />
-              <SendButton onClick={handleSend}>
+              <SendButton 
+                onClick={handleSend}
+                disabled={isLoading}
+              >
                 <span role="img" aria-label="send">➤</span>
               </SendButton>
             </ChatInputContainer>

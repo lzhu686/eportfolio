@@ -40,6 +40,11 @@ function Education() {
         <School>{t('education.school2')}</School>
         <Year>{t('education.year2')}</Year>
       </EducationItem>
+      <EducationItem>
+        <Degree>{t('education.degree3')}</Degree>
+        <School>{t('education.school3')}</School>
+        <Year>{t('education.year3')}</Year>
+      </EducationItem>
     </PageContainer>
   );
 }

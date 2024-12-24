@@ -12,7 +12,7 @@
   "home": {
     "name": "Zhu Liang",
     "title": "Interdisciplinary Engineer & Designer",
-    "bio": "Welcome to my ePortfolio. I am an engineer and designer with an interdisciplinary background, focusing on applying design thinking to complex system development. My deep background in mechanical engineering, industrial design, and computer science allows me to integrate multidisciplinary knowledge and methods in projects.",
+    "bio": "Welcome to my ePortfolio. I am an engineer and designer with an interdisciplinary background, focusing on applying design thinking to complex system development. My deep background in e-governance, applied psychology, geographic information science, and digital twins enables me to integrate multidisciplinary knowledge and methods in projects.",
     "highlight": "As a student in the Red Bird MPhil program at HKUST(GZ), I have achieved significant growth in interdisciplinary innovation. The unique curriculum and practical opportunities of this program have enabled me to integrate knowledge from engineering, design, and computer science, fostering my ability to solve complex problems."
   },
   "skills": {
@@ -26,8 +26,8 @@
     },
     "list": {
       "engineering": [
-        "Mechanical Engineering Design",
-        "CAD (Computer-Aided Design)",
+        "Web Development",
+        "Computer-Aided Design (CAD)",
         "Prototype Design",
         "Structural Analysis"
       ],
@@ -61,20 +61,20 @@
     "title": "Project Experience",
     "list": [
       {
-        "title": "Red Bird Project",
-        "description": "As a mechanical engineer, I participated in the development of a drone system, responsible for structural design and prototype production. I applied design thinking methods to solve challenges in weight and aerodynamics."
+        "title": "Web-based Psychological Support WeChat Mini Program Platform",
+        "description": "A WeChat Mini Program platform for psychological support based on web cloud services, combining knowledge of e-governance, psychology, and computer science to implement psychological counseling, psychological testing, and psychological knowledge sharing functions."
       },
       {
-        "title": "Smart Home System Design",
-        "description": "Combining knowledge of industrial design and computer science, I designed a user-friendly smart home control system. I developed the backend control logic using Python."
+        "title": "UE4-based Independent Educational Reform Project - College Student Entrepreneurship Virtual Simulation Platform",
+        "description": "An independently developed educational reform project using UE4, focusing on college students' entrepreneurial needs, combining e-governance expertise with virtual simulation technology. Independently designed interface, developed features, and completed the project."
       },
       {
-        "title": "Sustainable Packaging Design",
-        "description": "Using design thinking methods, I designed an eco-friendly packaging solution for a food company. Through material innovation and structural optimization, I significantly reduced packaging waste."
+        "title": "BNU Compass - Campus Navigation",
+        "description": "A web-based campus navigation system for Beijing Normal University, based on geographic information science and e-governance expertise. Focuses on solving campus navigation challenges with features including campus mapping, route planning, and location search."
       },
       {
-        "title": "Interdisciplinary Innovation Project",
-        "description": "As part of the Red Bird program, I led a team in developing an AI-powered sustainable urban transportation solution, integrating knowledge from engineering, design, and computer science."
+        "title": "UE5-based Danxiashan Outdoor Geography Field Study Educational Reform Project",
+        "description": "An educational reform project implemented in UE5 for outdoor geography field studies at Danxiashan, integrating knowledge of geographic information science, applied psychology, and computer science, with modules covering vegetation, soil, geology, hydrology, and more."
       }
     ]
   },

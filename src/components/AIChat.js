@@ -156,6 +156,28 @@ const ToggleButton = styled(motion.button)`
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
 
+const SuggestionButtons = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+`;
+
+const SuggestionButton = styled.button`
+  background-color: rgba(52, 152, 219, 0.2);
+  color: white;
+  border: 1px solid rgba(52, 152, 219, 0.5);
+  border-radius: 15px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba(52, 152, 219, 0.4);
+  }
+`;
+
 const TypewriterText = ({ text }) => {
   const [displayText, setDisplayText] = useState('');
 
@@ -181,13 +203,22 @@ const TypewriterText = ({ text }) => {
 };
 
 function AIChat() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isOpen, setIsOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const messagesEndRef = useRef(null);
+
+  // 初始化欢迎消息
+  useEffect(() => {
+    const welcomeMessage = i18n.language === 'zh' 
+      ? '您好！我是朱亮的AI助手。朱亮是一位专注于仿真系统工程和人形机器人遥操作的专业工程师，目前在香港科技大学(广州)攻读智能制造硕士学位。您可以问我关于朱亮的教育背景、项目经历、技能专长或职业发展等任何问题！'
+      : 'Hello! I am Zhu Liang\'s AI assistant. Zhu Liang is a professional engineer specializing in simulation systems engineering and humanoid robot teleoperation, currently pursuing a Master\'s degree in Intelligent Manufacturing at HKUST(GZ). Feel free to ask me about Zhu Liang\'s educational background, project experience, technical skills, or career development!';
+    
+    setMessages([{ text: welcomeMessage, isAI: true }]);
+  }, [i18n.language]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -205,14 +236,17 @@ function AIChat() {
       setError(null);
 
       try {
-        const response = await aiService.sendMessage(userMessage);
+        const response = await aiService.sendMessage(userMessage, i18n.language);
         if (response) {
           setMessages(prev => [...prev, { text: response, isAI: true }]);
         } else {
           throw new Error('无效的响应');
         }
       } catch (err) {
-        setError('抱歉，发生错误，请稍后重试');
+        const errorMessage = i18n.language === 'zh' 
+          ? '抱歉，发生错误，请稍后重试' 
+          : 'Sorry, an error occurred. Please try again later.';
+        setError(errorMessage);
         console.error('聊天错误:', err);
       } finally {
         setIsLoading(false);
@@ -224,6 +258,24 @@ function AIChat() {
     setInput(e.target.value);
     e.target.style.height = 'auto';
     e.target.style.height = `${e.target.scrollHeight}px`;
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setInput(suggestion);
+  };
+
+  const getSuggestions = () => {
+    return i18n.language === 'zh' ? [
+      '朱亮的机器人技术专长是什么？',
+      '朱亮有哪些项目经历？',
+      '朱亮的教育背景如何？',
+      '朱亮在人形机器人方面的经验？'
+    ] : [
+      'What are Zhu Liang\'s robotics specialties?',
+      'What project experience does Zhu Liang have?',
+      'What is Zhu Liang\'s educational background?',
+      'What experience does Zhu Liang have with humanoid robots?'
+    ];
   };
 
   return (
@@ -254,9 +306,21 @@ function AIChat() {
                   {msg.isAI ? <TypewriterText text={msg.text} /> : msg.text}
                 </Message>
               ))}
+              {messages.length === 1 && (
+                <SuggestionButtons>
+                  {getSuggestions().map((suggestion, index) => (
+                    <SuggestionButton
+                      key={index}
+                      onClick={() => handleSuggestionClick(suggestion)}
+                    >
+                      {suggestion}
+                    </SuggestionButton>
+                  ))}
+                </SuggestionButtons>
+              )}
               {isLoading && (
                 <Message $isAI>
-                  <span>思考中...</span>
+                  <span>{i18n.language === 'zh' ? '思考中...' : 'Thinking...'}</span>
                 </Message>
               )}
               {error && (

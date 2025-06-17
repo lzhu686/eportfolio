@@ -46,7 +46,7 @@ const SkillItem = styled.li`
 function Skills() {
   const { t } = useTranslation();
 
-  const skillCategories = ['engineering', 'design', 'computerScience', 'softSkills', 'interdisciplinary'];
+  const skillCategories = ['robotics', 'programming', 'development', 'simulation', 'tools', 'softSkills'];
 
   return (
     <PageContainer>

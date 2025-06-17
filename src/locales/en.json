@@ -11,84 +11,149 @@
   },
   "home": {
     "name": "Zhu Liang",
-    "title": "Interdisciplinary Engineer & Designer",
-    "bio": "Welcome to my ePortfolio. I am an engineer and designer with an interdisciplinary background, focusing on applying design thinking to complex system development. My deep background in e-governance, applied psychology, geographic information science, and digital twins enables me to integrate multidisciplinary knowledge and methods in projects.",
-    "highlight": "As a student in the Red Bird MPhil program at HKUST(GZ), I have achieved significant growth in interdisciplinary innovation. The unique curriculum and practical opportunities of this program have enabled me to integrate knowledge from engineering, design, and computer science, fostering my ability to solve complex problems."
+    "title": "Simulation Systems Engineer | Humanoid Robot Teleoperation Specialist",
+    "bio": "Welcome to my digital portfolio. I am an engineer specializing in simulation systems development and humanoid robot teleoperation, with extensive interdisciplinary background. My academic foundation spans intelligent manufacturing, geographic information science, applied psychology, and e-governance, with deep project experience in robot simulation, virtual reality, and human-computer interaction. By integrating engineering technology with human factors engineering principles, I am committed to developing more intelligent and human-centered robotic systems.",
+    "highlight": "Currently pursuing my Master's degree in Intelligent Manufacturing (Humanoid Robotics) at HKUST(GZ), focusing on humanoid robot multimodal training platforms and VR teleoperation technology development. Simultaneously interning at Tsinghua University Institute for AI Industry Research, working on high-fidelity simulator optimization and universal robot simulation controller development, advancing the practical application of robot simulation technologies."
   },
   "skills": {
     "title": "Skills",
     "categories": {
-      "engineering": "Engineering",
-      "design": "Design",
-      "computerScience": "Computer Science",
-      "softSkills": "Soft Skills",
-      "interdisciplinary": "Interdisciplinary Skills"
+      "robotics": "Robotics Technology",
+      "programming": "Programming Languages",
+      "development": "Development Technologies",
+      "simulation": "Simulation Technology",
+      "tools": "Development Tools",
+      "softSkills": "Comprehensive Skills"
     },
     "list": {
-      "engineering": [
-        "Web Development",
-        "Computer-Aided Design (CAD)",
-        "Prototype Design",
-        "Structural Analysis"
+      "robotics": [
+        "Humanoid Robot Simulation & Real Machine Debugging",
+        "Robot Cutting-edge Technology Rapid Reproduction & Deployment",
+        "Human-Robot Interactive Remote Control",
+        "VR/AR Teleoperation System Development",
+        "Motion Capture & Motion Control",
+        "ROS2 Robot Operating System",
+        "Mujoco Physics Simulation Engine",
+        "Isaac Sim Simulation Platform"
       ],
-      "design": [
-        "Industrial Design",
-        "3D Modeling and Rendering",
-        "Design Thinking",
-        "User Experience (UX) Design"
+      "programming": [
+        "Python (Robot Control, Data Analysis, Machine Learning)",
+        "JavaScript (React, Node.js, WebXR)",
+        "C# (Unity Development, Desktop Applications)",
+        "C++ (UE4/UE5 Development, Robot Algorithms)",
+        "SQL (Database Management, Spatial Data Queries)",
+        "HTML/CSS (Responsive Frontend Development)",
+        "MATLAB (Algorithm Development, Simulation Modeling)",
+        "OpenGL (Graphics Rendering Optimization)"
       ],
-      "computerScience": [
-        "Python Programming",
-        "Data Analysis",
-        "Machine Learning",
-        "Web Development"
+      "development": [
+        "Web Frontend & Backend Full-Stack Development",
+        "WeChat Mini Program Development",
+        "Unity 3D Game & Simulation Development",
+        "UE4/UE5 Virtual Reality & Simulation",
+        "WebXR Virtual Reality Application Development",
+        "Robot Host Computer Software Development",
+        "Real-time Audio/Video Communication Systems",
+        "3D Point Cloud Processing & Reconstruction",
+        "Computer Vision Algorithm Integration"
+      ],
+      "simulation": [
+        "High-Fidelity Robot Simulation Systems",
+        "3D Gaussian Splatting Rendering Technology",
+        "Virtual Simulation Experiment Platform Development",
+        "Digital Twin System Construction",
+        "CAD Model Format Conversion Algorithms",
+        "STEP/USD/URDF Model Processing",
+        "PhotoScan 3D Reconstruction",
+        "Geospatial Data Visualization"
+      ],
+      "tools": [
+        "Git Version Control & Collaboration",
+        "Docker Containerized Deployment",
+        "QGIS/ENVI Remote Sensing Image Processing",
+        "Visual Studio/VS Code",
+        "Hikvision Camera SDK",
+        "Tencent Maps API Development",
+        "Alibaba Cloud Server Deployment",
+        "SPSS Statistical Analysis Software"
       ],
       "softSkills": [
-        "Project Management",
-        "Team Leadership",
-        "Cross-functional Collaboration",
-        "Problem Solving"
-      ],
-      "interdisciplinary": [
-        "Interdisciplinary Problem Analysis",
-        "Innovative Thinking",
-        "System Integration",
-        "Multi-domain Knowledge Application"
+        "Interdisciplinary Team Project Management",
+        "Robot System Integration Capability",
+        "Technical Solution Rapid Prototyping",
+        "User Requirements Analysis & Product Design",
+        "Academic Research & Paper Writing",
+        "Technical Presentation & Results Reporting",
+        "Continuous Learning & Technology Tracking",
+        "Innovative Thinking & Problem Solving"
       ]
     }
   },
   "projects": {
     "title": "Project Experience",
+    "downloadPortfolio": "Download Portfolio",
+    "downloadResume": "Download Resume",
+    "tags": {
+      "humanoidRobot": "Humanoid Robot",
+      "vrTeleoperation": "VR Teleoperation",
+      "motionCapture": "Motion Capture",
+      "robotSimulation": "Robot Simulation",
+      "webDevelopment": "Web Development",
+      "intelligentRobot": "Intelligent Robot",
+      "welding": "Welding Applications",
+      "computerVision": "Computer Vision",
+      "gis": "Geographic Information System",
+      "navigationSystem": "Navigation System",
+      "campusService": "Campus Service",
+      "ue5": "UE5",
+      "geoEducation": "Geographic Education",
+      "educationInnovation": "Education Innovation",
+      "virtualSimulation": "Virtual Simulation",
+      "systemIntegration": "System Integration",
+      "projectManagement": "Project Management",
+      "algorithmDevelopment": "Algorithm Development",
+      "hardwareIntegration": "Hardware Integration"
+    },
     "list": [
       {
-        "title": "Web-based Psychological Support WeChat Mini Program Platform",
-        "description": "A WeChat Mini Program platform for psychological support based on web cloud services, combining knowledge of e-governance, psychology, and computer science to implement psychological counseling, psychological testing, and psychological knowledge sharing functions."
+        "title": "Humanoid Robot Multimodal Training Platform for Home Services",
+        "description": "Research project as Technical Developer and Project Manager (2025.01-2026.03). Recruited over ten master's students from diverse backgrounds, coordinating project management, equipment management, and technical development. Based on Apple Vision Pro, Quest3 VR devices, exploring WebXR, Unity software mediums to implement remote teleoperation development for Unitree G1 humanoid robots and Qiuzhi Technology MMK2 robots. Developed motion capture-based dexterous hand teleoperation technology, comparing inertial and optical motion capture solutions, achieving conversion from human motion capture data to robot joint angle data."
       },
       {
-        "title": "UE4-based Independent Educational Reform Project - College Student Entrepreneurship Virtual Simulation Platform",
-        "description": "An independently developed educational reform project using UE4, focusing on college students' entrepreneurial needs, combining e-governance expertise with virtual simulation technology. Independently designed interface, developed features, and completed the project."
+        "title": "Intelligent Robot for Flexible Welding Applications",
+        "description": "Startup project hardware/software engineering development (2024.09-2025.09). Independently developed multi-robot multi-project welding robot teaching-free Web platform based on Next.js+Three.js, developed remote real-time audio/video monitoring and teleoperation control based on Websocket+WebRTC. Self-developed model conversion algorithms supporting CAD engineering model conversion to Web lightweight industrial-grade model formats; self-developed point cloud conversion algorithms supporting real-time conversion of structured light camera results. Developed Python host computer control interfaces based on industrial robotic arm TCP protocol, integrated Hikvision camera SDK and self-developed crack detection vision models."
       },
       {
-        "title": "BNU Compass - Campus Navigation",
-        "description": "A web-based campus navigation system for Beijing Normal University, based on geographic information science and e-governance expertise. Focuses on solving campus navigation challenges with features including campus mapping, route planning, and location search."
+        "title": "BNU Compass Zhuhai Campus Navigation System", 
+        "description": "Key innovation project principal investigator, excellent completion (2023.01-2024.01). Conducted requirements research based on app store review data and campus faculty/student interviews. Outdoor navigation based on Tencent Maps campus base map overlaid with high-precision remote sensing images and GPS collection points, achieving full campus point coverage; indoor navigation based on building CAD floor plan data constructing spatial databases, implementing indoor navigation route design and visualization. Independently developed campus navigation WeChat mini-program based on Tencent Maps API and Alibaba Cloud servers, passing user and field testing."
       },
       {
-        "title": "UE5-based Danxiashan Outdoor Geography Field Study Educational Reform Project",
-        "description": "An educational reform project implemented in UE5 for outdoor geography field studies at Danxiashan, integrating knowledge of geographic information science, applied psychology, and computer science, with modules covering vegetation, soil, geology, hydrology, and more."
+        "title": "Geographic Field Comprehensive Practice Virtual Simulation Platform",
+        "description": "Beijing Normal University Virtual Simulation Experiment Teaching First-Class Course Project (2022.09-2024.06). Recorded landscape features at different locations using GPS positioning equipment, collected modeling textures; conducted image geographic coordinate calibration combining GPS positioning data. Implemented Danxiashan key area terrain 3D modeling using on-site drone oblique photography data combined with PhotoScan software. Based on UE5 engine, combined DEM terrain data, remote sensing image data, and drone modeling data to implement simulation terrain modeling, coordinating UI art assets, model assets, animation assets to complete simulation platform product technical development."
+      },
+      {
+        "title": "Entrepreneurship Support Simulation Experiment Platform for College Students",
+        "description": "Tianjin Municipal Education Commission Teacher Research Project Technical Lead (2019.05-2021.05). Responsible for technology selection, exploring VR object interaction and NPC dialogue interaction functions, independently developed and completed virtual simulation experiment platform. The platform provides students with a safe entrepreneurship practice environment, simulating real entrepreneurship scenarios through VR technology, effectively addressing insufficient practical opportunities in traditional entrepreneurship education."
       }
     ]
   },
   "education": {
     "title": "Education",
-    "degree1": "Master of Philosophy",
+    "degree1": "Master of Engineering",
     "school1": "Hong Kong University of Science and Technology (Guangzhou)",
-    "year1": "2024 - 2026",
-    "degree2": "Bachelor of Science",
+    "year1": "2024.09 - 2026.06",
+    "major1": "Intelligent Manufacturing (Humanoid Robotics)",
+    "highlight1": "Core Courses: CAD/CAM Fundamentals and Algorithms, Physics-based Robotics and Autonomous Driving Vision Technology, Project-driven Design Thinking. Focus on humanoid robot simulation, teleoperation control, and multimodal training platform development",
+    "degree2": "Bachelor of Science (Second Degree)",
     "school2": "Beijing Normal University",
-    "year2": "2022 - 2024",
-    "degree3": "Bachelor of Science",
-    "school3": "Nankai University",
-    "year3": "2018 - 2022"
+    "year2": "2022.09 - 2024.06",
+    "major2": "Geographic Information Science (Remote Sensing Science & Technology)",
+    "highlight2": "GPA 3.8/4.0 (Ranked 1st). Core Courses: Spatiotemporal Big Data Analysis, Satellite Positioning & Navigation, Spatial Database, Remote Sensing Digital Image Processing, Quantitative Remote Sensing Models & Inversion. Thesis: 'Land Surface Process Model Data Processing and Visualization Based on QGIS'",
+    "degree3": "Bachelor of Management",
+    "school3": "Nankai University Binhai College",
+    "year3": "2018.09 - 2022.06",
+    "major3": "Public Administration (E-Governance) Major + Applied Psychology (Counseling) Minor",
+    "highlight3": "Major GPA 93.11 (Ranked 1st), Minor GPA 90.18 (Ranked 1st). Published first-author paper in Peking University core journal: 'Impact of Police Officers' Stress Perception on Anxiety and Depression: A Moderated Mediation Model'. Received Outstanding Thesis Award"
   },
   "contact": {
     "title": "Contact Information",

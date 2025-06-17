@@ -36,15 +36,24 @@ ${content.projects.list.map(project =>
 const sendMessage = async (message, language = 'zh') => {
   const makeRequest = async () => {
     try {
-      const API_ENDPOINT = 'https://api.closeagi.com/v1/chat/completions';
-      const API_KEY = 'sk-3Uhd6y5DxAlZ2cRpA3F9Da18A8214f298cEdE16b525eF67b';
+      const API_ENDPOINT = process.env.REACT_APP_AI_API_ENDPOINT || 'https://api.deepseek.com/chat/completions';
+      const API_KEY = process.env.REACT_APP_AI_API_KEY;
 
       const portfolioContext = createPortfolioContext(language);
       
       const DEBUG = process.env.NODE_ENV === 'development' && process.env.REACT_APP_DEBUG === 'true';
       
+      if (!API_KEY) {
+        console.error('环境变量检查:', {
+          'REACT_APP_AI_API_KEY': process.env.REACT_APP_AI_API_KEY ? '已设置' : '未设置',
+          'REACT_APP_AI_API_ENDPOINT': process.env.REACT_APP_AI_API_ENDPOINT || '使用默认值',
+          'NODE_ENV': process.env.NODE_ENV
+        });
+        throw new Error('AI API Key 未配置，请在 .env 文件中设置 REACT_APP_AI_API_KEY');
+      }
+      
       if (DEBUG) {
-        console.log('发送请求到 AI API');
+        console.log('发送请求到 AI API:', API_ENDPOINT);
       }
 
       const response = await fetch(API_ENDPOINT, {
@@ -61,7 +70,7 @@ const sendMessage = async (message, language = 'zh') => {
             role: 'user',
             content: message
           }],
-          model: 'gpt-3.5-turbo-0125',
+          model: process.env.REACT_APP_AI_MODEL || 'deepseek-chat',
           temperature: 0.7,
           max_tokens: 1000
         })

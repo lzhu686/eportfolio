@@ -1,70 +1,150 @@
-# Getting Started with Create React App
+# Personal Portfolio Website | 个人作品集网站
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a personal portfolio website built with React, showcasing my skills, project experience, educational background, and contact information.
 
-## Available Scripts
+这是一个使用 React 构建的个人作品集网站，展示了我的技能、项目经验、教育背景和联系方式。
 
-In the project directory, you can run:
+## Tech Stack | 技术栈
 
-### `npm start`
+- React 18
+- React Router
+- Styled Components
+- Framer Motion
+- i18next (Internationalization Support | 国际化支持)
+- React Icons
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Local Development | 本地开发
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository | 克隆仓库
+```bash
+git clone https://github.com/lzhu686/eportfolio.git
+cd eportfolio
+```
 
-### `npm test`
+2. Install dependencies | 安装依赖
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Start development server | 启动开发服务器
+```bash
+npm start
+```
+The development server will start at [http://localhost:3000](http://localhost:3000) with hot reload support.
 
-### `npm run build`
+开发服务器将在 [http://localhost:3000](http://localhost:3000) 启动，支持热重载。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Deploy to GitHub Pages | 部署到 GitHub Pages
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Ensure all changes are committed to the main branch | 确保所有更改已提交到主分支
+```bash
+git add .
+git commit -m "Update content | 更新内容"
+git push origin main
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Deploy to GitHub Pages | 部署到 GitHub Pages
+```bash
+npm run deploy
+```
 
-### `npm run eject`
+After deployment, the website will be live at [https://lzhu686.github.io/eportfolio](https://lzhu686.github.io/eportfolio).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+部署完成后，网站将在 [https://lzhu686.github.io/eportfolio](https://lzhu686.github.io/eportfolio) 上线。
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure | 项目结构
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+src/
+  ├── components/     # Components Directory | 组件目录
+  │   ├── Header.js   # Navigation Header | 导航头部
+  │   ├── Home.js     # Home Page | 首页
+  │   ├── Skills.js   # Skills Showcase | 技能展示
+  │   ├── Projects.js # Projects Showcase | 项目展示
+  │   ├── Education.js# Education History | 教育经历
+  │   ├── Contact.js  # Contact Information | 联系方式
+  │   └── AIChat.js   # AI Chat Component | AI 聊天组件
+  ├── styles/         # Style Files | 样式文件
+  ├── i18n/          # Internationalization Config | 国际化配置
+  └── App.js         # Main Application Component | 主应用组件
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Main Features | 主要功能
 
-## Learn More
+- Responsive design for all devices | 响应式设计，适配各种设备
+- Multi-language support | 多语言支持
+- Project showcase | 项目展示
+- Skills showcase | 技能展示
+- Education history | 教育经历
+- Contact information | 联系方式
+- AI chat functionality | AI 聊天功能
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Notes | 注意事项
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- It may take a few minutes to see updates on GitHub Pages after deployment | 部署后可能需要等待几分钟才能在 GitHub Pages 上看到更新
+- If you encounter deployment issues, please check: | 如果遇到部署问题，请检查：
+  - The `homepage` field in `package.json` is correct | `package.json` 中的 `homepage` 字段是否正确
+  - The `gh-pages` dependency is installed | 确保有 `gh-pages` 依赖
+  - You have the correct GitHub repository permissions | 确保有正确的 GitHub 仓库权限
 
-### Code Splitting
+## License | 许可证
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+本项目采用双重许可模式：
 
-### Analyzing the Bundle Size
+1. 代码部分采用 MIT 许可证
+   - 允许自由使用、修改和分发代码
+   - 需要保留原始版权声明
+   - 不承担任何责任
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. 内容部分采用保留所有权利
+   - 包括设计、图片、文档等非代码内容
+   - 未经授权不得使用
 
-### Making a Progressive Web App
+## Intellectual Property Rights | 知识产权声明
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Copyright © 2024 Zhu Liang. All Rights Reserved.
 
-### Advanced Configuration
+### Code License | 代码许可
+The source code of this project is licensed under the MIT License, which allows for:
+- Free use, modification, and distribution
+- Commercial use
+- Private use
+- Patent use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+本项目的源代码采用 MIT 许可证，允许：
+- 自由使用、修改和分发
+- 商业用途
+- 私人用途
+- 专利用途
 
-### Deployment
+### Content Rights | 内容权利
+All non-code content, including but not limited to:
+- Design elements
+- Documentation
+- Images and media
+- Branding elements
+- Personal information
+- Portfolio content
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+are the exclusive property of Zhu Liang and are protected by international copyright laws.
 
-### `npm run build` fails to minify
+所有非代码内容，包括但不限于：
+- 设计元素
+- 文档
+- 图片和媒体
+- 品牌元素
+- 个人信息
+- 作品集内容
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+均为朱亮的专有财产，受国际版权法保护。
+
+### Usage Restrictions | 使用限制
+未经作者明确书面许可，不得：
+- 复制、修改或分发本项目的非代码内容
+- 将本项目的非代码内容用于商业目的
+- 创建本项目的非代码内容的衍生作品
+
+### Contact | 联系方式
+For any inquiries regarding the use of this project, please contact:
+如有关于本项目使用的任何问题，请联系：
+- Email | 邮箱：lzhu686@connect.hkust-gz.edu.cn

@@ -9,6 +9,7 @@ const Nav = styled.nav`
   padding: 1rem 0;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow-x: hidden;
 `;
 
 const NavContent = styled.div`
@@ -20,14 +21,33 @@ const NavContent = styled.div`
   align-items: center;
   padding: 0 1rem;
   flex-wrap: wrap;
+  position: relative;
+  box-sizing: border-box;
+  @media (max-width: 768px) {
+    padding: 0 0.5rem;
+    justify-content: flex-start;
+    min-height: 56px;
+    max-width: 100vw;
+    overflow: hidden;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 1.5rem;
   margin: 0;
   color: ${props => props.theme.colors.background};
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    text-align: left;
+    flex: 1;
+    padding-right: 110px;
+    box-sizing: border-box;
+    max-width: calc(100vw - 130px);
   }
 `;
 
@@ -38,6 +58,12 @@ const NavLinks = styled.div`
     flex-direction: column;
     width: 100%;
     display: ${props => props.$isOpen ? 'flex' : 'none'};
+    background: ${props => props.theme.colors.primary};
+    position: absolute;
+    top: 56px;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 `;
 
@@ -63,8 +89,18 @@ const LanguageButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 4px;
+  white-space: nowrap;
   &:hover {
     background: #00363a;
+  }
+  @media (max-width: 768px) {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.25rem 0.6rem;
+    z-index: 2;
+    font-size: 0.85rem;
   }
 `;
 
@@ -77,6 +113,12 @@ const MenuButton = styled.button`
   cursor: pointer;
   @media (max-width: 768px) {
     display: block;
+    position: absolute;
+    right: 65px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    padding: 0.25rem;
   }
 `;
 

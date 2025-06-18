@@ -10,6 +10,36 @@ const slideIn = keyframes`
   to { transform: translateY(0); }
 `;
 
+const typingDots = keyframes`
+  0%, 60%, 100% {
+    transform: initial;
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+`;
+
+const pulse = keyframes`
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+`;
+
+const shimmer = keyframes`
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+`;
+
 const ChatContainer = styled(motion.div)`
   position: fixed;
   bottom: 20px;
@@ -285,10 +315,78 @@ const MarkdownContent = styled.div`
   }
 `;
 
-const TypewriterMarkdown = ({ text }) => {
-  const [displayText, setDisplayText] = useState('');
+const ThinkingMessage = styled(motion.div)`
+  max-width: 80%;
+  padding: 15px 20px;
+  border-radius: 18px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  align-self: flex-start;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 200px 100%;
+  animation: ${shimmer} 2s infinite;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+`;
+
+const TypingDots = styled.div`
+  display: flex;
+  gap: 3px;
+  
+  span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: ${props => props.theme.colors.accent};
+    animation: ${typingDots} 1.4s infinite ease-in-out;
+    
+    &:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+    &:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0s;
+    }
+  }
+`;
+
+const ThinkingIcon = styled.div`
+  width: 20px;
+  height: 20px;
+  border: 2px solid ${props => props.theme.colors.accent};
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: ${pulse} 2s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  
+  &::before {
+    content: '🤔';
+    animation: ${pulse} 1.5s infinite;
+  }
+`;
+
+const TypewriterMarkdown = ({ text, shouldTypewrite = false }) => {
+  const [displayText, setDisplayText] = useState(shouldTypewrite ? '' : text);
 
   useEffect(() => {
+    if (!shouldTypewrite) {
+      setDisplayText(text);
+      return;
+    }
+
     if (!text) return;
     
     let currentIndex = 0;
@@ -304,7 +402,7 @@ const TypewriterMarkdown = ({ text }) => {
     }, 20);
 
     return () => clearInterval(timer);
-  }, [text]);
+  }, [text, shouldTypewrite]);
 
   return (
     <MarkdownContent>
@@ -328,7 +426,7 @@ function AIChat() {
       ? '您好！我是朱亮的AI助手。朱亮是一位专注于仿真系统工程和人形机器人遥操作的专业工程师，目前在香港科技大学(广州)攻读智能制造硕士学位。您可以问我关于朱亮的教育背景、项目经历、技能专长或职业发展等任何问题！'
       : 'Hello! I am Zhu Liang\'s AI assistant. Zhu Liang is a professional engineer specializing in simulation systems engineering and humanoid robot teleoperation, currently pursuing a Master\'s degree in Intelligent Manufacturing at HKUST(GZ). Feel free to ask me about Zhu Liang\'s educational background, project experience, technical skills, or career development!';
     
-    setMessages([{ text: welcomeMessage, isAI: true }]);
+    setMessages([{ text: welcomeMessage, isAI: true, shouldTypewrite: false }]);
   }, [i18n.language]);
 
   const scrollToBottom = () => {
@@ -349,7 +447,7 @@ function AIChat() {
       try {
         const response = await aiService.sendMessage(userMessage, i18n.language);
         if (response) {
-          setMessages(prev => [...prev, { text: response, isAI: true }]);
+          setMessages(prev => [...prev, { text: response, isAI: true, shouldTypewrite: true }]);
         } else {
           throw new Error('无效的响应');
         }
@@ -414,7 +512,7 @@ function AIChat() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {msg.isAI ? <TypewriterMarkdown text={msg.text} /> : msg.text}
+                  {msg.isAI ? <TypewriterMarkdown text={msg.text} shouldTypewrite={msg.shouldTypewrite} /> : msg.text}
                 </Message>
               ))}
               {messages.length === 1 && (
@@ -430,9 +528,19 @@ function AIChat() {
                 </SuggestionButtons>
               )}
               {isLoading && (
-                <Message $isAI>
-                  <span>{i18n.language === 'zh' ? '思考中...' : 'Thinking...'}</span>
-                </Message>
+                <ThinkingMessage
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ThinkingIcon />
+                  <span>{i18n.language === 'zh' ? '正在思考' : 'Thinking'}</span>
+                  <TypingDots>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </TypingDots>
+                </ThinkingMessage>
               )}
               {error && (
                 <Message $isAI style={{color: 'red'}}>

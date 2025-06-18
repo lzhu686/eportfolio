@@ -17,6 +17,7 @@
   },
   "skills": {
     "title": "Skills",
+    "subtitle": "A comprehensive overview of my technical expertise and capabilities across multiple domains.",
     "categories": {
       "robotics": "Robotics Technology",
       "programming": "Programming Languages",
@@ -24,6 +25,11 @@
       "simulation": "Simulation Technology",
       "tools": "Development Tools",
       "softSkills": "Comprehensive Skills"
+    },
+    "stats": {
+      "categories": "Skill Categories",
+      "technologies": "Technologies",
+      "experience": "Years Experience"
     },
     "list": {
       "robotics": [
@@ -40,7 +46,7 @@
         "Python (Robot Control, Data Analysis, Machine Learning)",
         "JavaScript (React, Node.js, WebXR)",
         "C# (Unity Development, Desktop Applications)",
-        "C++ (UE4/UE5 Development, Robot Algorithms)",
+        "C++ (UE4/UE5 Development)",
         "SQL (Database Management, Spatial Data Queries)",
         "HTML/CSS (Responsive Frontend Development)",
         "MATLAB (Algorithm Development, Simulation Modeling)",

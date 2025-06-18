@@ -158,7 +158,11 @@
   "contact": {
     "title": "Contact Information",
     "email": "Email",
-    "phone": "Phone"
+    "phone": "Phone",
+    "subtitle": "Looking forward to connecting and collaborating with you. Feel free to reach out through any of the channels below.",
+    "findMeOnline": "Find Me Online",
+    "callButton": "Call",
+    "note": "I welcome any interdisciplinary collaboration, especially in exploring the physical world through robotics."
   },
   "aiChat": {
     "title": "AI Assistant",

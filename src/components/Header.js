@@ -9,7 +9,10 @@ const Nav = styled.nav`
   padding: 1rem 0;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  overflow-x: hidden;
+  position: relative;
+  @media (max-width: 768px) {
+    overflow: visible;
+  }
 `;
 
 const NavContent = styled.div`
@@ -28,7 +31,7 @@ const NavContent = styled.div`
     justify-content: flex-start;
     min-height: 56px;
     max-width: 100vw;
-    overflow: hidden;
+    overflow: visible;
   }
 `;
 
@@ -56,14 +59,20 @@ const NavLinks = styled.div`
   flex-wrap: wrap;
   @media (max-width: 768px) {
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     display: ${props => props.$isOpen ? 'flex' : 'none'};
     background: ${props => props.theme.colors.primary};
     position: absolute;
-    top: 56px;
-    left: 0;
-    z-index: 1;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+    margin-top: 1rem;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
 `;
 
@@ -78,6 +87,14 @@ const NavLink = styled(Link)`
   }
   @media (max-width: 768px) {
     margin: 0.5rem 0;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: block;
+    width: 100%;
+    
+    &:last-child {
+      border-bottom: none;
+    }
   }
 `;
 
@@ -111,14 +128,29 @@ const MenuButton = styled.button`
   color: ${props => props.theme.colors.background};
   font-size: 1.5rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: ${props => props.theme.colors.accent};
+  }
+  
   @media (max-width: 768px) {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    right: 65px;
+    right: 70px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 2;
-    padding: 0.25rem;
+    z-index: 1001;
+    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    
+    &:active {
+      background: rgba(255, 255, 255, 0.1);
+    }
   }
 `;
 
@@ -134,17 +166,21 @@ function Header() {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Nav>
       <NavContent>
         <Title>{t('header.title')}</Title>
         <MenuButton onClick={toggleMenu}>☰</MenuButton>
         <NavLinks $isOpen={isOpen}>
-          <NavLink to="/">{t('navigation.home')}</NavLink>
-          <NavLink to="/skills">{t('navigation.skills')}</NavLink>
-          <NavLink to="/projects">{t('navigation.projects')}</NavLink>
-          <NavLink to="/education">{t('navigation.education')}</NavLink>
-          <NavLink to="/contact">{t('navigation.contact')}</NavLink>
+          <NavLink to="/" onClick={closeMenu}>{t('navigation.home')}</NavLink>
+          <NavLink to="/skills" onClick={closeMenu}>{t('navigation.skills')}</NavLink>
+          <NavLink to="/projects" onClick={closeMenu}>{t('navigation.projects')}</NavLink>
+          <NavLink to="/education" onClick={closeMenu}>{t('navigation.education')}</NavLink>
+          <NavLink to="/contact" onClick={closeMenu}>{t('navigation.contact')}</NavLink>
         </NavLinks>
         <LanguageButton onClick={() => changeLanguage(i18n.language === 'en' ? 'zh' : 'en')}>
           {i18n.language === 'en' ? '中文' : 'English'}

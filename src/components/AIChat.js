@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 import { aiService } from '../services/aiService';
 
 const slideIn = keyframes`
@@ -51,6 +52,30 @@ const ChatMessages = styled.div`
   padding: 15px;
   display: flex;
   flex-direction: column;
+  
+  /* 自定义滚动条样式 */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    transition: background 0.3s ease;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Firefox 滚动条样式 */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
 `;
 
 const ChatInputContainer = styled.div`
@@ -79,12 +104,27 @@ const ChatInput = styled.textarea`
     color: rgba(255, 255, 255, 0.6);
   }
 
+  /* 自定义滚动条样式 */
   &::-webkit-scrollbar {
-    display: none;
+    width: 4px;
   }
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Firefox 滚动条样式 */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 `;
 
 const SendButton = styled.button`
@@ -178,7 +218,74 @@ const SuggestionButton = styled.button`
   }
 `;
 
-const TypewriterText = ({ text }) => {
+const MarkdownContent = styled.div`
+  h1, h2, h3, h4, h5, h6 {
+    color: ${props => props.theme.colors.accent};
+    margin: 0.8rem 0 0.4rem 0;
+    font-weight: 600;
+  }
+  
+  h1 { font-size: 1.1rem; }
+  h2 { font-size: 1rem; }
+  h3 { font-size: 0.95rem; }
+  h4, h5, h6 { font-size: 0.9rem; }
+  
+  p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+  }
+  
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+  }
+  
+  li {
+    margin: 0.3rem 0;
+    line-height: 1.4;
+  }
+  
+  strong {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+  }
+  
+  em {
+    color: ${props => props.theme.colors.accent};
+    font-style: italic;
+  }
+  
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+  }
+  
+  pre {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.8rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 0.5rem 0;
+    
+    code {
+      background: none;
+      padding: 0;
+    }
+  }
+  
+  blockquote {
+    border-left: 3px solid ${props => props.theme.colors.accent};
+    padding-left: 0.8rem;
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+  }
+`;
+
+const TypewriterMarkdown = ({ text }) => {
   const [displayText, setDisplayText] = useState('');
 
   useEffect(() => {
@@ -194,12 +301,16 @@ const TypewriterText = ({ text }) => {
       } else {
         clearInterval(timer);
       }
-    }, 30);
+    }, 20);
 
     return () => clearInterval(timer);
   }, [text]);
 
-  return displayText;
+  return (
+    <MarkdownContent>
+      <ReactMarkdown>{displayText}</ReactMarkdown>
+    </MarkdownContent>
+  );
 };
 
 function AIChat() {
@@ -303,7 +414,7 @@ function AIChat() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {msg.isAI ? <TypewriterText text={msg.text} /> : msg.text}
+                  {msg.isAI ? <TypewriterMarkdown text={msg.text} /> : msg.text}
                 </Message>
               ))}
               {messages.length === 1 && (

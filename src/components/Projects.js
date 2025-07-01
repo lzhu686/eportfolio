@@ -154,7 +154,7 @@ function Projects() {
         
         <DownloadSection>
           <DownloadButton
-            href="/portfolio.pdf"
+            href={process.env.PUBLIC_URL + '/portfolio.pdf'}
             download="朱亮_作品集.pdf"
             target="_blank"
             whileHover={{ scale: 1.05 }}
@@ -165,7 +165,7 @@ function Projects() {
           </DownloadButton>
           
           <DownloadButton
-            href="/resume.pdf"
+            href={process.env.PUBLIC_URL + '/resume.pdf'}
             download="朱亮_个人简历.pdf"
             target="_blank"
             whileHover={{ scale: 1.05 }}
